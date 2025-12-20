@@ -2,8 +2,11 @@
 using Tools.Data;
 using Tools.Models;
 
+using Microsoft.AspNetCore.Authorization;
+
 namespace Tools.Controllers
 {
+    [Authorize]
     public class UsersController : Controller
     {
         UsersData oUsersData = new();
@@ -30,10 +33,10 @@ namespace Tools.Controllers
         {
             if (!ModelState.IsValid)
             {
-                return oUser.Id_User == 0 ? View("NewOrEdit", oUser) : View("NewOrEdit", oUser);
+                return oUser.Id == 0 ? View("NewOrEdit", oUser) : View("NewOrEdit", oUser);
             }
             bool result;
-            if (oUser.Id_User == 0)
+            if (oUser.Id == 0)
             {
                 result = oUsersData.NewUser(oUser);
             }
@@ -45,7 +48,7 @@ namespace Tools.Controllers
             {
                 return RedirectToAction("List");
             }
-            return oUser.Id_User == 0 ? View("NewOrEdit", oUser) : View("NewOrEdit", oUser);
+            return oUser.Id == 0 ? View("NewOrEdit", oUser) : View("NewOrEdit", oUser);
         }
         public IActionResult Delete(int oUserIdContacto)
         {
@@ -55,7 +58,7 @@ namespace Tools.Controllers
         [HttpPost]
         public IActionResult Delete(UsersModel oUser)
         {
-            var ouser = oUsersData.DeleteUser(oUser.Id_User);
+            var ouser = oUsersData.DeleteUser(oUser.Id);
             if (ouser)
             {
                 return RedirectToAction("List");

@@ -23,6 +23,7 @@
                     <th>Status</th>
                     <th>Nombre</th>
                     <th>Apellidos</th>
+                    <th>Roles</th>
                     <th></th>
                 </tr>
             </thead>
@@ -30,15 +31,16 @@
                 @foreach (var user in Model)
                 {
                     <tr>
-                        <td>@user.Username_User</td>
-                        <td>@user.Password_User</td>
-                        <td>@user.Email_User</td>
-                        <td>@user.Status_User</td>
-                        <td>@user.Nombre_User</td>
-                        <td>@user.Apellidos_User</td>
+                        <td>@user.Username</td>
+                        <td>@user.Password</td>
+                        <td>@user.Email</td>
+                        <td>@user.Status</td>
+                        <td>@user.Nombre</td>
+                        <td>@user.Apellidos</td>
+                        <td>@user.Roles</td>
                         <td>
-                            <a asp-action="NewOrEdit" asp-controller="Users" asp-route-oUserIdContacto="@user.Id_User" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
-                            <a asp-action="Delete" asp-controller="Users" asp-route-oUserIdContacto="@user.Id_User" class="btn btn-danger"><i class="bi bi-x-square"></i> Eliminar</a>
+                            <a asp-action="NewOrEdit" asp-controller="Users" asp-route-oUserIdContacto="@user.Id" class="btn btn-primary"><i class="bi bi-pencil-square"></i> Editar</a>
+                            <a asp-action="Delete" asp-controller="Users" asp-route-oUserIdContacto="@user.Id" class="btn btn-danger"><i class="bi bi-x-square"></i> Eliminar</a>
                         </td>
                     </tr>
                 }

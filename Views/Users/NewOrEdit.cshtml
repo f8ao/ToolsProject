@@ -1,6 +1,6 @@
 ﻿@model UsersModel
 @{
-    var isNew = Model?.Id_User == null || Model.Id_User == 0;
+    var isNew = Model?.Id == null || Model.Id == 0;
     ViewData["Title"] = isNew ? "Nuevo Usuario" : "Editar Usuario";
     ViewData["Icono"] = isNew ? "bi-file-plus" : "bi-pencil";
     ViewData["Boton"] = isNew ? "Nuevo" : " Editar";
@@ -17,30 +17,34 @@
     </div>
     <div class="card-body">
         <form asp-action="NewOrEdit" asp-controller="Users" method="post">
-            <input asp-for="Id_User" type="hidden" class="form-control" />
+            <input asp-for="Id" type="hidden" class="form-control" />
             <div class="mb-3">
                 <label class="form-label">Usuario</label>
-                <input asp-for="Username_User" type="text" class="form-control" />
+                <input asp-for="Username" type="text" class="form-control" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Password</label>
-                <input asp-for="Password_User" type="text" class="form-control" />
+                <input asp-for="Password" type="text" class="form-control" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Email</label>
-                <input asp-for="Email_User" type="text" class="form-control" />
+                <input asp-for="Email" type="text" class="form-control" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Status</label>
-                <input asp-for="Status_User" type="text" class="form-control" />
+                <input asp-for="Status" type="text" class="form-control" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Nombre</label>
-                <input asp-for="Nombre_User" type="text" class="form-control" />
+                <input asp-for="Nombre" type="text" class="form-control" />
             </div>
             <div class="mb-3">
                 <label class="form-label">Apellidos</label>
-                <input asp-for="Apellidos_User" type="text" class="form-control" />
+                <input asp-for="Apellidos" type="text" class="form-control" />
+            </div>
+            <div class="mb-3">
+                <label class="form-label">Roles</label>
+                <input asp-for="Roles" type="text" class="form-control" />
             </div>
             <button type="submit" class="btn btn-primary"><i class="bi @ViewData["Icono"]"></i> @ViewData["Boton"]</button>
             <a asp-action="List" asp-controller="Users" class="btn btn-primary"><i class="bi bi-list-task"></i> Regresar a lista</a>
